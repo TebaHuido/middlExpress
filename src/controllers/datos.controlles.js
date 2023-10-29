@@ -5,8 +5,8 @@ import {pool} from '../db.js';
 export const getDatos = async (req,res)=>{
 
     try {
-        const [rows] = await pool.query('select e.persona_id, nombre_completo, anio_titulo, genero,contraseña, e.carrera_id,'+
-        ' nombre,correo from persona p inner join egresados e on '+
+        const [rows] = await pool.query('select e.persona_id, nombre_completo, anio_titulo as anio_titulacion, genero,contraseña, e.carrera_id,'+
+        ' nombre as carrera ,correo from persona p inner join egresados e on '+
         '(e.persona_id= p.persona_id) inner join carrera c on (c.carrera_id=e.carrera_id)')
         res.json(rows)
             
